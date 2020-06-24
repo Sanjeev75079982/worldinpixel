@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+
+<style>
+  .card-column {
+
+    column-fill: auto;
+
+  }
+
+
+
+
+
+  .card-img-top  {
+    height: 15rem;
+    object-fit: cover;
+  }
+
+  .card-img-top:hover, .card-img-top:active{
+    
+    box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, 0.4)
+    /* position:relative;
+    
+    height:auto;
+    display:block;
+   
+    transition-duration: 0ms; */
+}
+  }
+
+  .container-fluid {
+
+    font-family: monospace !important;
+  }
+
+
+  .list-group-item {
+    background-color: black !important;
+    color: white;
+  }
+
+
+  .list-group-item:hover{
+    font-weight: bold;
+    color: azure;
+  }
+
+  .btn {
+
+
+    background-color: black !important;
+    color: aliceblue !important;
+    
+
+  }
+
+.btn:hover{
+  font-weight: bold;
+  color: grey !important;
+}
+
+  
+</style> 
+
+
+
+
+
+<div class="container-fluid">
+
+  <div class="row mt-2">
+
+    <div class="col-sm-2">
+
+
+      <div class="list-group">
+        <a href="/" class="list-group-item list-group-item-action active">
+          Images
+        </a>
+
+
+        {% for c in cats %}
+        <a href="/category/{{c.pk}}" class="list-group-item list-group-item-action">{{c.title}}</a>
+
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <div class="col-sm-10">
+      <!-- Images  -->
+
+
+
+
+
+      <div class="row">
+        
+        
+        
+
+        <div class="col-sm-12">
+
+          <div class="card-columns">
+
+            {% for i in page_obj %}
+
+            <div class="card">
+              <img src="/media/{{i.image}}" class="card-img-top" alt="">
+
+              <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.description}}</p>
+
+
+
+
+
+
+                <a class="btn btn-primary" onclick="showmodalwithImage('{{i.image}}')">View</a>
+
+
+                <!-- Signed up users -->
+
+                {% if user.is_authenticated  %}
+
+
+
+                <a href="/media/{{i.image}}" class="btn btn-primary" download><svg class="bi bi-download" width="1em"
+                    height="1em" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z" />
+                    <path fill-rule="evenodd"
+                      d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z" />
+                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z" />
+                  </svg></a>
+
+
+                <!-- HEART  -->
+
+
+                <a href="{% url 'myapp:user_login' %}" class="btn btn-primary">
+
+                  
+                    <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+
+
+                  </a>
+
+
+                  
+
+
+
+
+               
+
+
+              
+
+
+
+                {% endif %}
+              </div>
+            </div>
+
+
+            {% endfor %}
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div> 
+
+          </div>
+
+            
+
+
+        </div>
+
+      </div>
+    
+
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">WorldInPixel</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="#" id="image-show" class="img-fluid">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- PAGINATION -->
+
+ <div class="pagination justify-content-center">
+              <span class="step-links">
+                  {% if page_obj.has_previous %}
+                      <a href="?page=1">
+
+                        <svg class="bi bi-chevron-double-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                          <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                         
+                        
+                        
+                        </a>
+                      <a href="?page={{ page_obj.previous_page_number }}">
+                        <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                      </svg>
+                     </a>
+                  {% endif %}
+          
+                  <span class="current">
+                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                  </span>
+          
+                  {% if page_obj.has_next %}
+                      <a href="?page={{ page_obj.next_page_number }}">
+
+                        <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+
+
+                      </a>
+                      <a href="?page={{ page_obj.paginator.num_pages }}">
+
+
+
+                        <svg class="bi bi-chevron-double-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                          <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+
+                      </a>
+                  {% endif %}
+              </span>
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script>
+
+  function showmodalwithImage(ImageUrl) {
+    $('#image-modal').modal('show')
+    $('#image-show').attr('src', `/media/${ImageUrl}`)
+  }
+
+</script>
+
+
+{% endblock %}

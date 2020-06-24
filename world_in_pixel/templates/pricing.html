@@ -1,0 +1,185 @@
+{% extends "base.html"%}
+{% block body_block %}
+
+
+
+
+<style>
+  .card .card-body .btn {
+    background-color: black !important;
+  }
+
+  .page-footer {
+
+fill: b ack;
+background-color: black;
+color: aliceblue;
+
+}
+
+
+  .card {
+    display: inline-block;
+
+  }
+
+  .jumbotron h2 {
+    text-align: center;
+    font-family: monospace;
+    
+  }
+
+
+
+
+  * {
+    box-sizing: border-box;
+    
+  }
+  
+  .columns {
+    float:right;
+    width: 33%;
+    column-span: right;
+    padding: 8px;
+  }
+  
+  .price {
+    list-style-type: none;
+    border: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  
+
+  
+
+  .price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+  }
+  
+  .price .header {
+    background-color:black;
+    color: white;
+    font-size: 15px;
+  }
+  
+  .price li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .price .grey {
+    background-color: #eee;
+    font-size: 20px;
+  }
+  
+  .button {
+    background-color:#4CAF50;
+    border: none;
+    color: black;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .button:hover{
+    color: white;
+    background-color: black;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .columns {
+      width: 100%;
+    }
+  }
+  </style>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <h2>Choose your Subscription</h2>
+   
+    
+    
+  <!-- {% for i in price %}
+  
+  <div class="columns">
+    <ul class="price">
+      <li class="header">{{i.sub_type}}</li>
+      <li class="grey">{{i.price}}</li>
+      <li>Unlimited images</li>
+      
+      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
+    </ul>
+  </div>
+  
+
+  {% endfor %} -->
+
+</div>
+ 
+
+    <div class="columns">
+    <ul class="price">
+
+      <form action="{%url 'myapp:checkout'%}" ></form>
+
+      <li class="header">Yearly</li>
+      <li class="grey">₹ 4500</li>
+      <li>Unlimited images</li>
+      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subscribe</a></li>
+    </ul>
+  </div>
+ 
+
+
+  <div class="columns">
+    <ul class="price">
+      <li class="header">Quaterly</li>
+      <li class="grey">₹ 1500</li>
+      <li>Unlimited images</li>
+      
+      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
+    </ul>
+  </div> 
+
+
+  <div class="columns">
+    <ul class="price">
+      <li class="header">Monthly</li>
+      <li class="grey">₹ 500</li>
+      <li>Unlimited images</li>
+      
+      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
+    </ul>
+  </div> 
+ 
+ 
+
+
+
+<div>
+  <h6>Terms and Conditions:</h6>
+  <ul>
+
+    <li> Taxes extra (as applicable)</li>
+    <li> Downloaded videos/images will not be returned/replaced</li>
+    <li>Available for Indian Territory Only.</li>
+    <li>100% Money Back Guarantee: All the Subscription Packs mentioned above comes with a 100% Money Back Guarantee.
+      The refund will only be processed if you have not downloaded even a single image/video during the Subscription
+      period.</li>
+    <li>The downloaded images can be used for a period of 10 years.</li>
+  </ul>
+
+</div> 
+
+
+
+
+
+
+{% endblock %}
