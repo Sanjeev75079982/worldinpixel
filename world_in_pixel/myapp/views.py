@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
-from myapp.models import Category, Image, UserForm,Subscription
+from myapp.models import Category, Image, UserForm,Subscription, Contact
 from django.contrib.auth.models import User, auth
-from myapp.forms import UserForm
+from myapp.forms import UserForm, ContactForm
 
 from django.urls import reverse
 from django.contrib.auth import logout,login,authenticate
@@ -179,6 +179,8 @@ def checkout(request,pk):
    
     price = get_object_or_404(Subscription, pk=pk)
 
+    
+
     return render(request, 'checkout.html',{'price':price})
 
 
@@ -206,4 +208,45 @@ def agreement(request):
 
 
 def contactus(request):
-    return render(request, 'contact_us.html')
+    is_contacted = False
+
+    if request.method == 'POST':
+
+        contact_form = ContactForm(data = request.POST)
+       
+
+        if  contact_form.is_valid():
+
+            contact = contact_form.save()
+            contact.save()
+            messages.success(request,'Your Query has been submitted!!!')
+            return redirect('myapp:contactus')
+
+           
+            is_contacted = True
+
+            
+        else:
+            messages.warning(request,"Something went wrong")
+
+    else:
+        contact_form = ContactForm()
+       
+    
+
+    return render(request,'contact_us.html', {'contact_form': contact_form,'is_contacted':is_contacted})
+    
+
+
+
+def thanks(request):
+    return render(request, 'thanks.html')
+
+
+
+def user_profile(request):
+   
+
+    
+
+    return render(request,'user_profile.html')

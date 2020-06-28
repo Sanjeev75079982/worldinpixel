@@ -110,7 +110,28 @@ color: aliceblue;
       <li class="grey">{{i.price}}</li>
       <li>Unlimited images</li>
       
-      <li class="grey"><a href="{% url 'myapp:checkout'  pk=i.pk%}" class="button" type="submit">Subcribe</a></li>
+      <li class="grey">
+
+        {% if user.is_authenticated  %}
+
+        
+
+          <a href="{% url 'myapp:checkout'  pk=i.pk%}" class="button" type="submit">
+          Subcribe
+          </a>
+
+
+        {% else %}
+
+          <a href="{% url 'myapp:user_login'  %}" class="button" type="submit">
+          Subcribe
+          </a>
+
+        {% endif %}
+
+
+      
+      </li>
     </ul>
   </div>
   

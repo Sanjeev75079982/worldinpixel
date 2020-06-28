@@ -40,8 +40,6 @@ class Subscription(models.Model):
     sub_type = models.CharField(max_length=50,null=True)
     price = models.IntegerField()
     
-    
-    
     def __str__(self):
         return str(self.price)
 
@@ -54,14 +52,20 @@ class Subscription(models.Model):
 class UserForm(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     
-   
-
-    
-    
-
-    
     def __str__(self):
         return self.user.username
+
+
+class Contact(models.Model):
+    
+    full_name = models.CharField(max_length=100,blank=True, null=True)
+    email     = models.CharField(max_length=100,blank=True,null=True)
+    subject   = models.CharField(max_length=100,blank=True)
+    description = models.CharField(max_length=500,blank=True)
+
+    def __str__(self):
+        return str(self.subject)
+
 
 
 

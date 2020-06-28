@@ -13,4 +13,6 @@ urlpatterns = [
     path('terms_of_use/',views.terms_of_use,name='terms_of_use'),
     path('licennse_agreement', views.agreement, name='agreement'),
     path('contact_us/',views.contactus,name='contactus'),
+    path('thanks/',views.thanks,name='thanks'),
+    path('user_profile',views.user_profile,name='user_profile'),
 ]
