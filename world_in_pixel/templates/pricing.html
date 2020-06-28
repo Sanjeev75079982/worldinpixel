@@ -103,9 +103,9 @@ color: aliceblue;
     <div class="jumbotron jumbotron-fluid">
       <h2>Choose your Subscription</h2>
    
+    </div>
     
-    
-  <!-- {% for i in price %}
+  {% for i in daam %}
   
   <div class="columns">
     <ul class="price">
@@ -113,58 +113,58 @@ color: aliceblue;
       <li class="grey">{{i.price}}</li>
       <li>Unlimited images</li>
       
-      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
+      <li class="grey"><a href="{% url 'myapp:checkout' pk=price.pk %}" class="button">Subcribe</a></li>
     </ul>
   </div>
   
 
-  {% endfor %} -->
+  {% endfor %}
 
-</div>
+
  
+
+      <!-- <div class="columns">
+      <ul class="price">
+
+        <form action="{%url 'myapp:checkout'%}" ></form>
+
+        <li class="header">Yearly</li>
+        <li class="grey">₹ 4500</li>
+        <li>Unlimited images</li>
+        <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subscribe</a></li>
+      </ul>
+    </div>
+  
+
 
     <div class="columns">
-    <ul class="price">
-
-      <form action="{%url 'myapp:checkout'%}" ></form>
-
-      <li class="header">Yearly</li>
-      <li class="grey">₹ 4500</li>
-      <li>Unlimited images</li>
-      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subscribe</a></li>
-    </ul>
-  </div>
- 
+      <ul class="price">
+        <li class="header">Quaterly</li>
+        <li class="grey">₹ 1500</li>
+        <li>Unlimited images</li>
+        
+        <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
+      </ul>
+    </div> 
 
 
-  <div class="columns">
-    <ul class="price">
-      <li class="header">Quaterly</li>
-      <li class="grey">₹ 1500</li>
-      <li>Unlimited images</li>
-      
-      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
-    </ul>
-  </div> 
-
-
-  <div class="columns">
-    <ul class="price">
-      <li class="header">Monthly</li>
-      <li class="grey">₹ 500</li>
-      <li>Unlimited images</li>
-      
-      <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
-    </ul>
-  </div> 
- 
- 
+    <div class="columns">
+      <ul class="price">
+        <li class="header">Monthly</li>
+        <li class="grey">₹ 500</li>
+        <li>Unlimited images</li>
+        
+        <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
+      </ul>
+    </div> 
+  
+  
 
 
 
-<div>
-  <h6>Terms and Conditions:</h6>
-  <ul>
+  <div>
+    <h6>Terms and Conditions:</h6>
+    <ul> -->
 
     <li> Taxes extra (as applicable)</li>
     <li> Downloaded videos/images will not be returned/replaced</li>

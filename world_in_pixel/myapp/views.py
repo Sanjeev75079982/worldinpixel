@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import render, redirect, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from myapp.models import Category, Image, UserForm,Subscription
 from django.contrib.auth.models import User, auth
 from myapp.forms import UserForm
@@ -12,7 +12,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-# Create your views here.
 
 def home(request):
     cats = Category.objects.all()
@@ -103,15 +102,17 @@ def category(request,cid):
 
 
 
+
 def signup(request):
 
     registered = False
 
     if request.method == 'POST':
-        user_form = UserForm(data = request.POST)
-        # profile_form = UserProfileInfoForm(data = request.POST)
 
-        if  user_form.is_valid():#and profile_form.is_valid():
+        user_form = UserForm(data = request.POST)
+       
+
+        if  user_form.is_valid():
 
             user = user_form.save()
             user.set_password(user.password)
@@ -119,8 +120,6 @@ def signup(request):
             messages.success(request,'Successfully registered!!!')
             return redirect('myapp:user_login')
 
-           
-                
            
             registered = True
 
@@ -130,10 +129,12 @@ def signup(request):
 
     else:
         user_form = UserForm()
-        # profile_form = UserProfileInfoForm()
-
-
+       
     return render(request,'signup.html', {'user_form': user_form,'registered':registered})#'profile_form': profile_form,})
+
+
+
+
 
 
 def user_login(request):
@@ -161,15 +162,45 @@ def user_login(request):
 
 
 def pricing(request):
-    price = Subscription.objects.all()
 
-    data = {'price': price}
+    
+    daam = Subscription.objects.all()
+    
+    data = {'daam': daam}
 
     return render(request,'pricing.html',data)
 
 
-def checkout(request):
-    return render(request, 'checkout.html')
 
 
 
+def checkout(request,pk):
+   
+    price = get_object_or_404(Subscription, pk=pk)
+
+    return render(request, 'checkout.html',{'price':price})
+
+
+
+
+
+def aboutus(request):
+    return render(request, 'about_us.html')
+
+
+
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
+
+
+
+def terms_of_use(request):
+    return render(request, 'terms_of_use.html')
+
+
+def agreement(request):
+    return render(request,'agreement.html')
+
+
+def contactus(request):
+    return render(request, 'contact_us.html')

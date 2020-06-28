@@ -39,7 +39,7 @@ class Subscription(models.Model):
     
     sub_type = models.CharField(max_length=50,null=True)
     price = models.IntegerField()
-    samay = models.DateField( default = timezone.now)
+    
     
     
     def __str__(self):

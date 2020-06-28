@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"s
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>WorldInPixel</title>
 
@@ -20,12 +22,11 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
 
-  }
 
-/* 
-  body{
-    background-color: ;
-  } */
+
+
+
+  }
 
   .navbar .navbar-nav li a:hover {
 
@@ -39,14 +40,6 @@
 
   }
 
-/*  
-.footer{
-  position: absolute;
-    bottom: 0;
-    margin-top:2px;
-    height: 5% !important;
-    z-index: 999;
-} */
 
 
 
@@ -61,11 +54,6 @@
   }
 
 
-  .body {
-
-    background-color: #FFDEAD;
-
-  }
 
   .navbar {
     padding: 20px;
@@ -80,15 +68,62 @@
     align-content: center !important;
     width: fit-content !important;
   }
-</style>
 
+
+body, html {
+  height: 100%;
+  margin: 0;
+  
+} 
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/media/css/img_nature_wide.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+.jumbotron{
+
+    background-color: #e7f3fe;
+    border-left: 6px solid #333;
+}
+h2{
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif    ;
+}
+
+
+</style>
+</head>
 <body>
 
-  
-
-
-    </div>
-  </div>
 
 
 
@@ -141,19 +176,26 @@
 
 
 
-  <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-
-
-  <div class="container-fluid ">
-
-    {% block body_block %}
-
-    {% endblock %}
-
+<div class="hero-image">
+    <div class="hero-text">
+      <h1 style="font-size:25px">WorldInPixel is one the leading stock image content market place, offering a variety of stock images at a very low price that you can get only from us.</h1>
+      
+    </div>
   </div>
+  
+
+  <div class="jumbotron">
+
+
+   <h2>Founded in 2020, WorldInPixel has the potential to became the original source for user-generated stock photos</h2>
+   <p>WorldInPixel is an imperative resource for searching, purchasing and downloading creative Indian . Thousands of leading brands across the globe have been using our content for their advertising, marketing and publishing needs.</p>
+
+  
+  </div>
+
+
+  
+
 
 
 
@@ -189,15 +231,16 @@
             <h5 class="text-uppercase">Legal</h5>
 
             <ul class="list-unstyled">
-              <li>
-                <a href="{% url 'myapp:privacy_policy' %}">Privacy policy </a>
-              </li>
-              <li>
-                <a href="{% url 'myapp:terms_of_use' %}">Terms of use</a>
-              </li>
-              <li>
-                <a href="{% url 'myapp:agreement' %}">License Agreement</a>
-              </li>
+                <li>
+                    <a href="{% url 'myapp:privacy_policy' %}">Privacy policy </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'myapp:terms_of_use' %}">Terms of use</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'myapp:agreement' %}">License Agreement</a>
+                  </li>
+    
 
             </ul>
 
