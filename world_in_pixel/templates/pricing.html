@@ -53,9 +53,6 @@ color: aliceblue;
     transition: 0.3s;
   }
   
-
-  
-
   .price:hover {
     box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
   }
@@ -113,7 +110,7 @@ color: aliceblue;
       <li class="grey">{{i.price}}</li>
       <li>Unlimited images</li>
       
-      <li class="grey"><a href="{% url 'myapp:checkout' pk=price.pk %}" class="button">Subcribe</a></li>
+      <li class="grey"><a href="{% url 'myapp:checkout'  pk=i.pk%}" class="button" type="submit">Subcribe</a></li>
     </ul>
   </div>
   
@@ -123,49 +120,10 @@ color: aliceblue;
 
  
 
-      <!-- <div class="columns">
-      <ul class="price">
-
-        <form action="{%url 'myapp:checkout'%}" ></form>
-
-        <li class="header">Yearly</li>
-        <li class="grey">₹ 4500</li>
-        <li>Unlimited images</li>
-        <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subscribe</a></li>
-      </ul>
-    </div>
-  
-
-
-    <div class="columns">
-      <ul class="price">
-        <li class="header">Quaterly</li>
-        <li class="grey">₹ 1500</li>
-        <li>Unlimited images</li>
-        
-        <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
-      </ul>
-    </div> 
-
-
-    <div class="columns">
-      <ul class="price">
-        <li class="header">Monthly</li>
-        <li class="grey">₹ 500</li>
-        <li>Unlimited images</li>
-        
-        <li class="grey"><a href="{% url 'myapp:checkout' %}" class="button">Subcribe</a></li>
-      </ul>
-    </div> 
-  
-  
-
-
-
+    
   <div>
     <h6>Terms and Conditions:</h6>
-    <ul> -->
-
+    <ul>
     <li> Taxes extra (as applicable)</li>
     <li> Downloaded videos/images will not be returned/replaced</li>
     <li>Available for Indian Territory Only.</li>

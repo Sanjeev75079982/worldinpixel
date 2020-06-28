@@ -163,6 +163,7 @@ def user_login(request):
 
 def pricing(request):
 
+
     
     daam = Subscription.objects.all()
     
@@ -179,6 +180,8 @@ def checkout(request,pk):
     price = get_object_or_404(Subscription, pk=pk)
 
     return render(request, 'checkout.html',{'price':price})
+
+
 
 
 
