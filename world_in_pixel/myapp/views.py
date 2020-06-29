@@ -25,10 +25,10 @@ def home(request):
     page_number = request.GET.get('page')
 
 
-    # post = get_list_or_404(Image, id=id)
+    # image = get_object_or_404(Image, pk=pk)
     # is_favourite = False
 
-    # if post.favourite.filter(id=request.user.id).exists():
+    # if image.favourite.filter(pk=request.user.pk).exists():
     #     is_favourite = True
 
     
@@ -69,14 +69,14 @@ def home(request):
 
 
 
-# def favourite(request, id):
+# def favourite(request, pk):
 
-#     image = get_list_or_404(Image, id=id)
+#     image = get_object_or_404(Image, pk=pk)
 
-#     if image.favourite.filter(id=request.user.id).exists():
-#         post.favourite.remove(request.user)
+#     if image.favourite.filter(pk=request.user.pk).exists():
+#         image.favourite.remove(request.user)
 #     else:
-#         post.favourite.add(request.user)
+#         image.favourite.add(request.user)
 
 
 
